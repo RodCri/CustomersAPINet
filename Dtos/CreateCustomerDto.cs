@@ -1,8 +1,7 @@
 ﻿namespace Customers.Dtos
 {
-    public class CustomerDto
+    public class CreateCustomerDto
     {
-        private long Id { set; get; }
         private string FirstName { set; get; }
         private string LastName { set; get; }
         private string Email { set; get; }
