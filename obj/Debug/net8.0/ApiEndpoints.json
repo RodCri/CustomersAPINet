@@ -2,7 +2,7 @@
   {
     "ContainingType": "Customers.Controllers.CustomerController",
     "Method": "GetCustomers",
-    "RelativePath": "api/Customer",
+    "RelativePath": "api/customer",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -22,7 +22,7 @@
   {
     "ContainingType": "Customers.Controllers.CustomerController",
     "Method": "CreateCustomer",
-    "RelativePath": "api/Customer",
+    "RelativePath": "api/customer",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
@@ -41,14 +41,14 @@
           "application/json",
           "text/json"
         ],
-        "StatusCode": 200
+        "StatusCode": 201
       }
     ]
   },
   {
     "ContainingType": "Customers.Controllers.CustomerController",
     "Method": "UpdateCustomer",
-    "RelativePath": "api/Customer",
+    "RelativePath": "api/customer",
     "HttpMethod": "PUT",
     "IsController": true,
     "Order": 0,
@@ -74,7 +74,7 @@
   {
     "ContainingType": "Customers.Controllers.CustomerController",
     "Method": "GetCustomer",
-    "RelativePath": "api/Customer/{id}",
+    "RelativePath": "api/customer/{id}",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -94,13 +94,22 @@
           "text/json"
         ],
         "StatusCode": 200
+      },
+      {
+        "Type": "Microsoft.AspNetCore.Mvc.ProblemDetails",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 404
       }
     ]
   },
   {
     "ContainingType": "Customers.Controllers.CustomerController",
     "Method": "DeleteCustomer",
-    "RelativePath": "api/Customer/{id}",
+    "RelativePath": "api/customer/{id}",
     "HttpMethod": "DELETE",
     "IsController": true,
     "Order": 0,
@@ -114,26 +123,6 @@
     "ReturnTypes": [
       {
         "Type": "System.Boolean",
-        "MediaTypes": [
-          "text/plain",
-          "application/json",
-          "text/json"
-        ],
-        "StatusCode": 200
-      }
-    ]
-  },
-  {
-    "ContainingType": "Customers.Controllers.WeatherForecastController",
-    "Method": "Get",
-    "RelativePath": "WeatherForecast",
-    "HttpMethod": "GET",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [],
-    "ReturnTypes": [
-      {
-        "Type": "System.Collections.Generic.IEnumerable\u00601[[Customers.WeatherForecast, Customers, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
         "MediaTypes": [
           "text/plain",
           "application/json",

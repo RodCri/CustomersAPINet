@@ -2,12 +2,12 @@
 {
     public class CustomerDto
     {
-        private long Id { set; get; }
-        private string FirstName { set; get; }
-        private string LastName { set; get; }
-        private string Email { set; get; }
-        private string Phone { set; get; }
-        private string Address { set; get; }
+        public long Id { set; get; }
+        public string FirstName { set; get; }
+        public string LastName { set; get; }
+        public string Email { set; get; }
+        public string Phone { set; get; }
+        public string Address { set; get; }
 
     }
 }

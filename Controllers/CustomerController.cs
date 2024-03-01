@@ -1,4 +1,5 @@
 ﻿using Customers.Dtos;
+using Customers.Repositorios;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Customers.Controllers
@@ -7,12 +8,21 @@ namespace Customers.Controllers
     [Route("api/[controller]")]
     public class CustomerController : Controller
     {
+        private readonly CustomerDatabaseContext _customerDatabaseContext;
+
+        public CustomerController(CustomerDatabaseContext customerDatabaseContext)
+        {
+            _customerDatabaseContext = customerDatabaseContext;
+        }
+
         //api/customer
         [HttpGet()]
-        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(CustomerDto))]
+        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(List<CustomerDto>))]
         public async Task<IActionResult> GetCustomers()
         {
-            throw new NotImplementedException();
+            var result = _customerDatabaseContext.Customer
+                .Select(c=>c.ToDto()).ToList();
+            return new OkObjectResult(result);
         }
 
         //api/customer/{id}
@@ -21,8 +31,9 @@ namespace Customers.Controllers
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         public async Task<IActionResult> GetCustomer(long id)
         {
-            var customerEmpty = new CustomerDto();
-            return new OkObjectResult(customerEmpty);
+            CustomerEntity result = await _customerDatabaseContext.Get(id);
+            return new OkObjectResult(result.ToDto());
+
         }
 
         //api/customer/{id}
@@ -30,7 +41,8 @@ namespace Customers.Controllers
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(bool))]
         public async Task<IActionResult> DeleteCustomer(long id)
         {
-            throw new NotImplementedException();
+            var result = await _customerDatabaseContext.Delete(id);
+            return new OkObjectResult(result);
         }
 
         //api/customer/{customer}
@@ -38,8 +50,8 @@ namespace Customers.Controllers
         [ProducesResponseType(StatusCodes.Status201Created, Type = typeof(CustomerDto))]
         public async Task<IActionResult> CreateCustomer(CreateCustomerDto customer)
         {
-            var vacio = new CustomerDto();
-            return new CreatedResult($"http://localhost:7030/api/customer/{vacio}",null);
+            CustomerEntity result = await _customerDatabaseContext.Add(customer);
+            return new CreatedResult($"http://localhost:7030/api/customer/{result.Id}",null);
         }
 
         //api/customer/{id}
